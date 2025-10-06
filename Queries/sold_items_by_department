@@ -1,0 +1,8 @@
+SELECT d.department, COUNT(f.fact_id) AS number_of_items_ordered
+FROM instacart.department_dim AS d
+JOIN instacart.product_dim AS p ON p.department_key=d.department_key
+JOIN instacart.fact_order_product AS f ON f.product_key=p.product_key
+GROUP BY d.department_key
+HAVING COUNT(f.fact_id)>= 1000000
+ORDER BY COUNT(f.fact_id) DESC
+;

@@ -1,0 +1,6 @@
+SELECT d.department, COUNT(p.product_key) AS number_of_available_products
+FROM instacart.department_dim AS d
+JOIN instacart.product_dim AS p ON p.department_key=d.department_key
+GROUP BY d.department_key
+ORDER BY COUNT(p.product_key) DESC
+;

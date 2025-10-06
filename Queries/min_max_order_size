@@ -1,0 +1,10 @@
+WITH order_size_by_user AS(
+SELECT o.order_key, COUNT(f.fact_id) AS number_of_products_in_order
+FROM instacart.order_dim AS o 
+JOIN instacart.fact_order_product AS f ON f.order_key=o.order_key
+GROUP BY o.order_key
+)
+SELECT *
+FROM order_size_by_user
+ORDER BY number_of_products_in_order DESC
+LIMIT 5;

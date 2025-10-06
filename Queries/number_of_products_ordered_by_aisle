@@ -1,0 +1,7 @@
+SELECT a.aisle, COUNT(f.fact_id) AS number_ordered
+FROM instacart.aisle_dim AS a
+JOIN instacart.product_dim AS p ON p.aisle_key=a.aisle_key
+JOIN instacart.fact_order_product AS f ON f.product_key=p.product_key
+GROUP BY a.aisle
+ORDER BY COUNT(f.fact_id) DESC LIMIT 5
+;
